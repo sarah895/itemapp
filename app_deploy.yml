@@ -1,0 +1,22 @@
+---
+- hosts: all
+  remote_user: chefdev
+  become: yes
+  tasks:
+    - name: install the Docker
+      yum:
+       name: python-docker-py
+       state: present
+
+    - name: Pull docker image
+      docker_image:
+       name: docker.target.com/dojo-bootcamp/items:2.0.1
+       source: pull
+
+    - name: Run the docker image
+      docker_container:
+       name: dockerimage
+       image: docker.target.com/dojo-bootcamp/items:2.0.1
+       state: started
+       ports:
+        - "5000:5000"
