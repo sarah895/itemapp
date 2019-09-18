@@ -3,18 +3,18 @@
   tasks:
   - name: " Installing Docker latest version"
     yum:
-      name: python-docker-py
-      state: present
+     name: python-docker-py
+     state: present
 
   - name: pull an image
     docker_image:
-      name: docker.target.com/dojo-bootcamp/items:2.0.1
-      source: pull
+     name: docker.target.com/dojo-bootcamp/items:2.0.1
+     source: pull
 
   - name: Running the container
     docker_container:
-      name: dockerimage
-      image: docker.target.com/dojo-bootcamp/items:2.0.1
-      state: started
-      ports:
+     name: dockerimage
+     image: docker.target.com/dojo-bootcamp/items:2.0.1
+     state: started
+     ports:
         - "5001:5000"
